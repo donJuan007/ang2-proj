@@ -1,24 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Person } from './person';
-
+import { PeopleService } from './people.service';
 
 @Component({
   selector: 'people-list',
   template: `
   <h1> Listing of People </h1>
    <ul>
-    <li *ngFor="let person of people">
+    <li *ngFor="let person of people" (click)="selectPerson(person)">
     {{ person.name}}
     </li>
-    </ul>    
-  `
+    </ul>   
+    <person-details [person] = "selectedPerson"></person-details> 
+  `,
+  providers: [PeopleService]
 })
 
-export class PeopleListComponent {
-    people: Person[] = [
-        {name: 'Luke Skywalker', height: 177, weight: 70},
-        {name: 'Darth Vader', height: 200, weight: 100},
-        {name: 'Han Solo', height: 185, weight: 85},
-    ];
+export class PeopleListComponent implements OnInit{
+    people: Person[] = [];
+    selectedPerson: Person;
+
+    constructor(private _peopleService : PeopleService) {}
+    
+    ngOnInit() {
+         this.people = this._peopleService.getAll();
+    }
+
+selectPerson(person: Person) {
+    this.selectedPerson = person;
+}
+
 
 }
