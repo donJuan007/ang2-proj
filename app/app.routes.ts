@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { PeopleListComponent } from './people-list.component';
-
+import {  PersonDetailsComponent } from './person-details.component';
 
 //route config lets you map routes to componenta
 const routes: Routes = [
@@ -8,6 +8,12 @@ const routes: Routes = [
     {
         path: 'persons',
         component: PeopleListComponent,
+    },
+    //map persons to person details by id
+    {
+        path: 'persons/:id',
+        component: PersonDetailsComponent
+
     },
 
     {
