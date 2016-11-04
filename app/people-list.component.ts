@@ -7,8 +7,10 @@ import { PeopleService } from './people.service';
   template: `
   <h1> Listing of People </h1>
    <ul>
-    <li *ngFor="let person of people" (click)="selectPerson(person)">
+    <li *ngFor="let person of people">
+    <a href="#" [routerLink]="['/persons', person.id]">
     {{ person.name}}
+    </a>
     </li>
     </ul>   
     <person-details [person] = "selectedPerson"></person-details> 
@@ -26,9 +28,7 @@ export class PeopleListComponent implements OnInit{
          this.people = this._peopleService.getAll();
     }
 
-selectPerson(person: Person) {
-    this.selectedPerson = person;
-}
+
 
 
 }

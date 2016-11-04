@@ -11,4 +11,8 @@ export class PeopleService {
     getAll() : Person[] {
         return PEOPLE;           
     }
+
+    get(id: number) : Person {
+        return PEOPLE.find(p => p.id === id);
+    }
 }
