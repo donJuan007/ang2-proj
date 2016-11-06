@@ -12,8 +12,7 @@ import { PeopleService } from './people.service';
     {{ person.name}}
     </a>
     </li>
-    </ul>   
-    <person-details [person] = "selectedPerson"></person-details> 
+    </ul>      
   `,
   providers: [PeopleService]
 })
